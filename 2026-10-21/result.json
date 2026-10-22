@@ -1,0 +1,547 @@
+{
+  "date": "2026-10-21",
+  "ymd": "20261021",
+  "sentiment": {
+    "zt_count": 50,
+    "zb_count": 19,
+    "dt_count": 5,
+    "break_rate": 27.5,
+    "max_height": 4,
+    "ladder": {
+      "1": 34,
+      "2": 12,
+      "3": 1,
+      "4": 3
+    },
+    "advance_rate": 31.5,
+    "profit_effect": 72.2,
+    "tier": "分歧"
+  },
+  "industry_dist": [
+    [
+      "IT服务Ⅱ",
+      5
+    ],
+    [
+      "通用设备",
+      4
+    ],
+    [
+      "通信设备",
+      3
+    ],
+    [
+      "出版",
+      3
+    ],
+    [
+      "照明设备",
+      2
+    ],
+    [
+      "化学制药",
+      2
+    ],
+    [
+      "计算机设",
+      1
+    ],
+    [
+      "汽车零部",
+      1
+    ],
+    [
+      "玻璃玻纤",
+      1
+    ],
+    [
+      "化学纤维",
+      1
+    ],
+    [
+      "工程机械",
+      1
+    ],
+    [
+      "包装印刷",
+      1
+    ],
+    [
+      "农产品加",
+      1
+    ],
+    [
+      "广告营销",
+      1
+    ],
+    [
+      "游戏Ⅱ",
+      1
+    ],
+    [
+      "中药Ⅱ",
+      1
+    ],
+    [
+      "化学制品",
+      1
+    ],
+    [
+      "通信服务",
+      1
+    ],
+    [
+      "饲料",
+      1
+    ],
+    [
+      "塑料",
+      1
+    ]
+  ],
+  "themes": [
+    [
+      "“羊”字辈",
+      5
+    ],
+    [
+      "数据要素",
+      5
+    ],
+    [
+      "AI应用",
+      4
+    ],
+    [
+      "端侧AI",
+      2
+    ],
+    [
+      "业绩增长",
+      2
+    ],
+    [
+      "AI漫剧",
+      2
+    ],
+    [
+      "人形机器人",
+      2
+    ],
+    [
+      "出版发行",
+      2
+    ],
+    [
+      "数据库",
+      2
+    ],
+    [
+      "机器人",
+      1
+    ],
+    [
+      "通信模组",
+      1
+    ],
+    [
+      "裸眼3D",
+      1
+    ],
+    [
+      "AI创意",
+      1
+    ],
+    [
+      "高铁传媒",
+      1
+    ],
+    [
+      "长源并表",
+      1
+    ],
+    [
+      "生物医药",
+      1
+    ],
+    [
+      "中润收购",
+      1
+    ],
+    [
+      "算力租赁",
+      1
+    ],
+    [
+      "Token业务",
+      1
+    ],
+    [
+      "英伟达合作",
+      1
+    ]
+  ],
+  "ladder": {
+    "1": 34,
+    "2": 12,
+    "3": 1,
+    "4": 3
+  },
+  "highs": [
+    {
+      "code": "002313",
+      "name": "日海智能",
+      "limit_days": 2,
+      "industry": "通信设备",
+      "seal_fund": 95359616,
+      "break_times": 0,
+      "first_seal": "09:25:00",
+      "reason": "端侧AI+无线模组+机器人应用+国资划转"
+    },
+    {
+      "code": "002347",
+      "name": "泰尔股份",
+      "limit_days": 2,
+      "industry": "通用设备",
+      "seal_fund": 118858684,
+      "break_times": 0,
+      "first_seal": "09:25:00",
+      "reason": "工业机器人+冶金装备"
+    },
+    {
+      "code": "002724",
+      "name": "海洋王",
+      "limit_days": 4,
+      "industry": "照明设备",
+      "seal_fund": 200085643,
+      "break_times": 0,
+      "first_seal": "09:25:00",
+      "reason": "专业照明+AI照明+军工+“羊”字辈"
+    },
+    {
+      "code": "002835",
+      "name": "同为股份",
+      "limit_days": 2,
+      "industry": "计算机设",
+      "seal_fund": 80623384,
+      "break_times": 1,
+      "first_seal": "09:25:00",
+      "reason": "视频监控+人工智能安防+海外业务+AI ISP"
+    },
+    {
+      "code": "600178",
+      "name": "东安动力",
+      "limit_days": 4,
+      "industry": "汽车零部",
+      "seal_fund": 159713176,
+      "break_times": 1,
+      "first_seal": "09:25:00",
+      "reason": "飞行汽车+增程器+汽车动力"
+    },
+    {
+      "code": "603278",
+      "name": "大业股份",
+      "limit_days": 4,
+      "industry": "通用设备",
+      "seal_fund": 400539411,
+      "break_times": 0,
+      "first_seal": "09:25:00",
+      "reason": "人形机器人+橡胶骨架材料+全球销售"
+    },
+    {
+      "code": "600293",
+      "name": "三峡新材",
+      "limit_days": 2,
+      "industry": "玻璃玻纤",
+      "seal_fund": 498892139,
+      "break_times": 0,
+      "first_seal": "09:25:01",
+      "reason": "重大重组+锂电电解液+汽车电子玻璃"
+    },
+    {
+      "code": "002076",
+      "name": "星光股份",
+      "limit_days": 2,
+      "industry": "照明设备",
+      "seal_fund": 138444845,
+      "break_times": 0,
+      "first_seal": "09:30:00",
+      "reason": "数据要素+LED封装+量子科技+信息安全"
+    },
+    {
+      "code": "001239",
+      "name": "永达股份",
+      "limit_days": 2,
+      "industry": "工程机械",
+      "seal_fund": 27538697,
+      "break_times": 1,
+      "first_seal": "09:30:06",
+      "reason": "盾构机+风电锻件+并购重组"
+    },
+    {
+      "code": "002181",
+      "name": "粤 传 媒",
+      "limit_days": 2,
+      "industry": "出版",
+      "seal_fund": 189355581,
+      "break_times": 0,
+      "first_seal": "09:31:30",
+      "reason": "微短剧+妙创平台+参股投资收益"
+    },
+    {
+      "code": "002929",
+      "name": "润建股份",
+      "limit_days": 3,
+      "industry": "通信服务",
+      "seal_fund": 145914765,
+      "break_times": 1,
+      "first_seal": "09:35:57",
+      "reason": "词元出海+网络安全大模型+算力网络"
+    },
+    {
+      "code": "002696",
+      "name": "百洋股份",
+      "limit_days": 2,
+      "industry": "饲料",
+      "seal_fund": 86975152,
+      "break_times": 0,
+      "first_seal": "09:36:03",
+      "reason": "水产饲料+鱼粉涨价+青岛国资+“羊”字辈"
+    },
+    {
+      "code": "603236",
+      "name": "移远通信",
+      "limit_days": 2,
+      "industry": "通信设备",
+      "seal_fund": 7701486,
+      "break_times": 17,
+      "first_seal": "09:46:12",
+      "reason": "端侧AI+机器人+通信模组+业绩增长"
+    },
+    {
+      "code": "603696",
+      "name": "安记食品",
+      "limit_days": 2,
+      "industry": "调味发酵",
+      "seal_fund": 47951916,
+      "break_times": 1,
+      "first_seal": "10:00:50",
+      "reason": "复合调味品+对台贸易+业绩增长"
+    },
+    {
+      "code": "603636",
+      "name": "南威软件",
+      "limit_days": 2,
+      "industry": "IT服务Ⅱ",
+      "seal_fund": 71068267,
+      "break_times": 0,
+      "first_seal": "11:04:39",
+      "reason": "AI短剧+数据要素+政务智能体+数字政府"
+    },
+    {
+      "code": "002242",
+      "name": "九阳股份",
+      "limit_days": 2,
+      "industry": "小家电",
+      "seal_fund": 39528201,
+      "break_times": 4,
+      "first_seal": "14:24:15",
+      "reason": "机器人投资+厨房小家电+豆浆机+“羊”字辈"
+    }
+  ],
+  "oneb_top5": [
+    {
+      "code": "688500",
+      "name": "慧辰股份",
+      "industry": "IT服务Ⅱ",
+      "reason": "数据要素+数据分析+具身智能+AI应用",
+      "seal_fund": 26039521,
+      "turnover": 11.17,
+      "float_cap": 2815776971.28,
+      "break_times": 1,
+      "first_seal": "11:27:43",
+      "vol_ratio": 4.61,
+      "pos": 0.78,
+      "score": 85
+    },
+    {
+      "code": "603138",
+      "name": "海量数据",
+      "industry": "IT服务Ⅱ",
+      "reason": "数据库+AI应用+定增注册",
+      "seal_fund": 87695222,
+      "turnover": 5.31,
+      "float_cap": 4434713033.0,
+      "break_times": 0,
+      "first_seal": "09:30:07",
+      "vol_ratio": 1.45,
+      "pos": 0.82,
+      "score": 82
+    },
+    {
+      "code": "601999",
+      "name": "出版传媒",
+      "industry": "出版",
+      "reason": "出版发行+AI应用+数智基金",
+      "seal_fund": 87166092,
+      "turnover": 3.24,
+      "float_cap": 4297134660.0,
+      "break_times": 0,
+      "first_seal": "09:30:33",
+      "vol_ratio": 0.41,
+      "pos": 0.84,
+      "score": 78
+    },
+    {
+      "code": "301159",
+      "name": "三维天地",
+      "industry": "软件开发",
+      "reason": "数据要素+AI应用+具身机器人+检验检测",
+      "seal_fund": 42980111,
+      "turnover": 14.42,
+      "float_cap": 2054860469.76,
+      "break_times": 0,
+      "first_seal": "11:21:15",
+      "vol_ratio": 3.03,
+      "pos": 1.0,
+      "score": 77
+    },
+    {
+      "code": "603999",
+      "name": "读者传媒",
+      "industry": "出版",
+      "reason": "出版发行+数字出版+人工智能",
+      "seal_fund": 70470799,
+      "turnover": 11.65,
+      "float_cap": 4302720000.0,
+      "break_times": 0,
+      "first_seal": "13:06:01",
+      "vol_ratio": 1.99,
+      "pos": 0.73,
+      "score": 75
+    }
+  ],
+  "n_top5": [],
+  "n_fail_reasons": {
+    "未站上/未多头 MA20>MA60": 74,
+    "近12日无放量涨停起涨阳线": 41,
+    "MA20 下行": 14,
+    "无回调段": 6,
+    "回调段内仍有涨停（连板非回调）": 5,
+    "回调 7 天，超出1-5天": 5,
+    "回调跌破起涨阳线最低点，形态失败": 3,
+    "均线不足": 1,
+    "当日涨停（二次启动已走完）": 1,
+    "回调 6 天，超出1-5天": 1,
+    "K线不足30根": 1
+  },
+  "dt": [
+    {
+      "code": "002847",
+      "name": "盐津铺子",
+      "pct": -10.0,
+      "dt_days": 1,
+      "industry": "休闲食品"
+    },
+    {
+      "code": "603980",
+      "name": "吉华集团",
+      "pct": -10.0,
+      "dt_days": 1,
+      "industry": "化学制品"
+    },
+    {
+      "code": "600241",
+      "name": "时代万恒",
+      "pct": -9.99,
+      "dt_days": 1,
+      "industry": "电池"
+    },
+    {
+      "code": "603200",
+      "name": "上海洗霸",
+      "pct": -10.0,
+      "dt_days": 1,
+      "industry": "环境治理"
+    },
+    {
+      "code": "000712",
+      "name": "锦龙股份",
+      "pct": -10.02,
+      "dt_days": 1,
+      "industry": "证券Ⅱ"
+    }
+  ],
+  "break_pool_top": [
+    {
+      "code": "000032",
+      "name": "深桑达Ａ",
+      "pct": 4.1,
+      "break_times": 1,
+      "industry": "专业工程"
+    },
+    {
+      "code": "605488",
+      "name": "福莱新材",
+      "pct": 6.2,
+      "break_times": 1,
+      "industry": "塑料"
+    },
+    {
+      "code": "002355",
+      "name": "兴民智通",
+      "pct": 6.06,
+      "break_times": 1,
+      "industry": "汽车零部"
+    },
+    {
+      "code": "600319",
+      "name": "亚星化学",
+      "pct": 7.35,
+      "break_times": 3,
+      "industry": "化学原料"
+    },
+    {
+      "code": "603058",
+      "name": "永吉股份",
+      "pct": 3.09,
+      "break_times": 3,
+      "industry": "包装印刷"
+    },
+    {
+      "code": "002535",
+      "name": "林州重机",
+      "pct": 2.88,
+      "break_times": 1,
+      "industry": "专用设备"
+    },
+    {
+      "code": "002420",
+      "name": "毅昌科技",
+      "pct": 2.41,
+      "break_times": 1,
+      "industry": "综合Ⅱ"
+    },
+    {
+      "code": "603677",
+      "name": "奇精机械",
+      "pct": 4.26,
+      "break_times": 2,
+      "industry": "家电零部"
+    },
+    {
+      "code": "603703",
+      "name": "盛洋科技",
+      "pct": 4.67,
+      "break_times": 1,
+      "industry": "光学光电"
+    },
+    {
+      "code": "002865",
+      "name": "钧达股份",
+      "pct": 4.18,
+      "break_times": 1,
+      "industry": "光伏设备"
+    }
+  ]
+}

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A股每日复盘 · 2026-10-22</title>
+<!--
+  stock-daily 报告模板 —— 渲染时按顺序替换下列占位符（双花括号包裹，用生成内容整体替换，不要改其他部分）。
+  注意：本注释里**不要写带花括号的占位符字面量**，否则渲染时会被内容整个注入注释、把文件撑大。
+    TITLE              页面标题（含交易日）
+    META               数据时点 + 来源（一行元信息）
+    SENTIMENT_BADGE    情绪档位徽章：<span class="badge sentiment-冰点|退潮|分歧|修复|高潮">修复</span>
+    SENTIMENT_SUMMARY  情绪指标概览（用 .metrics / .metric 结构）
+    BOARD_SECTION      板块情况（领涨/领跌 + 资金流表格）
+    LADDER_SECTION     连板梯队（梯队表 + 高标明细）
+    ONEB_TABLE         一板→二板候选 TOP5 表格
+    N_TABLE            N字候选表（题材/首板日/调整天数/支撑档/量比/触发价/距触发%/股价/流通市值/得分）
+    GATE_BANNER        规则闸门横幅（含空洞/半仓/正常 与命中条目、数据源降级提示）
+    FILTERED_SECTION   一进二落选原因（可折叠 details）
+    REVIEW_SECTION     昨日名单回填表（晋级/失败/未触板）
+    RISK_EXTRA         风险提示里动态补充的一句话（若无可填「当日无特别提示」）
+  涨红跌绿：数值用 <span class="up">+x.x%</span> / <span class="down">-x.x%</span>
+-->
+<style>
+  :root {
+    --up: #e03131; --down: #099268;
+    --bg: #f6f7fb; --card: #ffffff; --border: #e5e7eb;
+    --text: #1f2329; --muted: #6b7280; --accent: #2563eb;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0f141a; --card: #171d26; --border: #2a323d;
+      --text: #e6e9ef; --muted: #8b95a3;
+      --up: #ff6b6b; --down: #37d39a;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+                 "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    line-height: 1.6; padding: 24px 16px 48px;
+  }
+  .wrap { max-width: 1080px; margin: 0 auto; }
+  header { border-bottom: 1px solid var(--border); padding-bottom: 16px; margin-bottom: 20px; }
+  h1 { font-size: 24px; margin: 0 0 6px; }
+  .meta { color: var(--muted); font-size: 13px; }
+  .badge {
+    display: inline-block; padding: 4px 14px; border-radius: 999px;
+    font-size: 14px; font-weight: 600; color: #fff; margin-top: 10px;
+  }
+  .sentiment-冰点 { background: #64748b; }
+  .sentiment-退潮 { background: #94a3b8; }
+  .sentiment-分歧 { background: #f59e0b; }
+  .sentiment-修复 { background: #10b981; }
+  .sentiment-高潮 { background: #ef4444; }
+  section { background: var(--card); border: 1px solid var(--border); overflow-x: auto;
+            border-radius: 12px; padding: 20px; margin-bottom: 20px; }
+  h2 { font-size: 18px; margin: 0 0 14px; border-left: 4px solid var(--accent); padding-left: 10px; }
+  h3 { font-size: 15px; margin: 16px 0 8px; color: var(--muted); }
+  table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  th, td { padding: 8px 10px; border-bottom: 1px solid var(--border); text-align: left; }
+  th { background: var(--bg); color: var(--muted); font-weight: 600; white-space: nowrap; }
+  tbody tr:hover { background: rgba(37,99,235,.05); }
+  .num { text-align: right; font-variant-numeric: tabular-nums; }
+  .up { color: var(--up); font-weight: 600; }
+  .down { color: var(--down); font-weight: 600; }
+  .metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px; }
+  .metric { background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: 12px; }
+  .metric .k { font-size: 12px; color: var(--muted); }
+  .metric .v { font-size: 20px; font-weight: 700; margin-top: 2px; }
+  .muted { color: var(--muted); font-size: 13px; }
+  .note { border-left: 3px solid var(--accent); background: rgba(37,99,235,.06);
+          padding: 10px 14px; border-radius: 0 8px 8px 0; font-size: 13.5px; margin-top: 10px; }
+  .risk li { margin-bottom: 6px; }
+  .banner { border-radius: 10px; padding: 14px 16px; margin-bottom: 20px; font-size: 14px;
+            border: 1px solid var(--border); background: var(--card); }
+  .banner .tag { display:inline-block; padding: 2px 10px; border-radius: 999px;
+                 font-size: 12px; font-weight: 700; color: #fff; margin-right: 8px; }
+  .gate-空仓 { background: #64748b; } .gate-半仓 { background: #f59e0b; }
+  .gate-正常 { background: #10b981; } .gate-未知 { background: #94a3b8; }
+  .banner ul { margin: 8px 0 0; padding-left: 20px; }
+  .banner.warn { border-color: #f59e0b; background: rgba(245,158,11,.08); }
+  details { margin-top: 12px; }
+  details summary { cursor: pointer; color: var(--accent); font-size: 13.5px; }
+  .strike { text-decoration: line-through; color: var(--muted); }
+  .nw { white-space: nowrap; }
+  .pick { border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; margin-top: 14px;
+          background: var(--bg); }
+  .pick-head { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .pick-no { width: 22px; height: 22px; border-radius: 50%; background: var(--accent); color: #fff;
+             display: inline-flex; align-items: center; justify-content: center; font-size: 13px; }
+  .pick-name { font-size: 16px; }
+  .pick h4 { font-size: 13px; color: var(--muted); margin: 12px 0 6px; }
+  .why { margin: 0; padding-left: 20px; font-size: 13.5px; }
+  .why li { margin-bottom: 3px; }
+  .levels { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 13px; color: var(--muted); }
+  .levels b { color: var(--text); font-variant-numeric: tabular-nums; }
+  table.mini { font-size: 13px; }
+  table.mini th, table.mini td { padding: 6px 8px; }
+  .chip { display: inline-block; padding: 1px 8px; border-radius: 999px; font-size: 12px;
+          font-weight: 600; color: #fff; }
+  .cat-大盘 { background: #64748b; } .cat-情绪 { background: #f59e0b; }
+  .cat-板块 { background: #2563eb; } .cat-个股 { background: #b91c1c; }
+  .cat-晋级 { background: #10b981; } .cat-数据不足 { background: #94a3b8; }
+  td.wrap { white-space: normal; word-break: break-word; }
+  footer { text-align: center; color: var(--muted); font-size: 12px; margin-top: 24px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>A股每日复盘 · 2026-10-22</h1>
+    <div class="meta">数据时点 15:00 · 情绪档位 退潮 · 规则库 v1.5 · 生成于 2026-10-22T22:30:28+08:00</div>
+    <div><span class="badge sentiment-退潮">退潮</span></div>
+  </header>
+
+  <div class="banner warn"><span class="tag gate-空仓">环境闸门 · 空仓</span>涨停 33 / 跌停 49 · 炸板率 41.1% · 晋级率 17.6%<br><b>执行：</b>一进二不接力：名单仅作观察，不给买点、不给仓位。<ul><li>R-ENV-01 · 跌停 49 家 ≥ 涨停 33 家</li><li>R-ENV-01 · 炸板率 41.1% ≥ 40%</li><li>R-ENV-01 · 晋级率 17.6% &lt; 20%</li><li>R-ENV-01 · 上涨家数 448 &lt; 1000</li><li>R-ENV-04 · 情绪档位「退潮」→ 一进二授权为 0</li></ul></div><div class="banner warn"><b>数据源降级</b><ul><li>东财 push2 板块（行业涨跌/资金流）：push2 板块接口被 WAF 掐断（降级：涨停行业分布+题材归因+市场宽度）</li></ul></div>
+
+  <section>
+    <h2>市场情绪</h2>
+    <div class="metrics"><div class="metric"><div class="k">涨停</div><div class="v">33</div></div><div class="metric"><div class="k">跌停</div><div class="v">49</div></div><div class="metric"><div class="k">炸板</div><div class="v">23</div></div><div class="metric"><div class="k">炸板率</div><div class="v">41.1%</div></div><div class="metric"><div class="k">最高连板</div><div class="v">5 板</div></div><div class="metric"><div class="k">晋级率</div><div class="v">17.6%</div></div><div class="metric"><div class="k">赚钱效应</div><div class="v">33.3%</div></div><div class="metric"><div class="k">涨跌停比</div><div class="v">0.7</div></div></div><p class="muted" style="margin-top:12px">连板梯队：5 板 2 家 · 3 板 2 家 · 2 板 5 家 · 1 板 24 家</p><div class="note">情绪「退潮」：涨停 33 / 跌停 49、炸板率 41.1%、晋级率 17.6%，全市场 448 涨 / 4739 跌，成交 1.53 万亿。环境闸门命中 4 条判为「空仓」——一进二不接力，名单仅作观察。</div>
+  </section>
+
+  <section>
+    <h2>板块情况</h2>
+    <p class="muted">主线判断：<b>人形机器人</b></p><h3>涨停行业分布（板块强度代理）</h3><table><thead><tr><th class="">行业</th><th class="num">涨停家数</th></tr></thead><tbody><tr><td class="">电机Ⅱ</td><td class="num">7</td></tr><tr><td class="">通用设备</td><td class="num">4</td></tr><tr><td class="">专用设备</td><td class="num">3</td></tr><tr><td class="">照明设备</td><td class="num">3</td></tr><tr><td class="">汽车零部</td><td class="num">3</td></tr><tr><td class="">工程机械</td><td class="num">2</td></tr><tr><td class="">玻璃玻纤</td><td class="num">1</td></tr><tr><td class="">IT服务Ⅱ</td><td class="num">1</td></tr><tr><td class="">基础建设</td><td class="num">1</td></tr><tr><td class="">出版</td><td class="num">1</td></tr></tbody></table><h3>题材归因 TOP</h3><table><thead><tr><th class="">题材</th><th class="num">提及家数</th></tr></thead><tbody><tr><td class="">人形机器人</td><td class="num">7</td></tr><tr><td class="">“羊”字辈</td><td class="num">3</td></tr><tr><td class="">数据中心液冷</td><td class="num">2</td></tr><tr><td class="">军工</td><td class="num">2</td></tr><tr><td class="">机器人关节</td><td class="num">2</td></tr><tr><td class="">液冷算力</td><td class="num">1</td></tr><tr><td class="">特种油升级</td><td class="num">1</td></tr><tr><td class="">三季报增长</td><td class="num">1</td></tr><tr><td class="">数据要素</td><td class="num">1</td></tr><tr><td class="">信息安全</td><td class="num">1</td></tr></tbody></table><div class="note">主线一天内切到人形机器人（电机Ⅱ 7 家、通用设备 4 家，题材提及 7 次）；昨日的数据要素 / AI应用 / 出版全线退潮，IT服务Ⅱ 只剩 1 家涨停，这正是昨日名单里慧辰、三维天地开盘即被抛弃、读者传媒低开闷杀的直接原因。</div>
+  </section>
+
+  <section>
+    <h2>连板梯队</h2>
+    <table><thead><tr><th class="">板数</th><th class="">代码</th><th class="">名称</th><th class="">行业</th><th class="">涨停原因</th><th class="">板型</th><th class="num">封单(亿)</th><th class="num">炸板</th><th class="">首封</th></tr></thead><tbody><tr><td class="">5 板</td><td class="">002724</td><td class="">海洋王</td><td class="">照明设备</td><td class="">专业照明+AI照明+军工+“羊”字辈</td><td class="">T字板</td><td class="num">0.68</td><td class="num">4</td><td class="">09:25:00</td></tr><tr><td class="">5 板</td><td class="">603278</td><td class="">大业股份</td><td class="">通用设备</td><td class="">人形机器人+橡胶骨架材料+全球销售</td><td class="">换手板</td><td class="num">2.58</td><td class="num">0</td><td class="">09:30:19</td></tr><tr><td class="">3 板</td><td class="">002076</td><td class="">星光股份</td><td class="">照明设备</td><td class="">数据要素+信息安全+LED封装+量子科技</td><td class="">T字板</td><td class="num">0.06</td><td class="num">14</td><td class="">09:25:00</td></tr><tr><td class="">3 板</td><td class="">600293</td><td class="">三峡新材</td><td class="">玻璃玻纤</td><td class="">重大重组+锂电电解液+汽车电子玻璃</td><td class="">一字板</td><td class="num">4.43</td><td class="num">0</td><td class="">09:25:00</td></tr><tr><td class="">2 板</td><td class="">603138</td><td class="">海量数据</td><td class="">IT服务Ⅱ</td><td class="">数据库+AI应用+定增注册</td><td class="">T字板</td><td class="num">0.18</td><td class="num">5</td><td class="">09:25:01</td></tr><tr><td class="">2 板</td><td class="">601999</td><td class="">出版传媒</td><td class="">出版</td><td class="">出版发行+AI出版+数智基金</td><td class="">换手板</td><td class="num">0.04</td><td class="num">10</td><td class="">09:30:54</td></tr><tr><td class="">2 板</td><td class="">600202</td><td class="">哈空调</td><td class="">通用设备</td><td class="">空冷器+飞翼空冷器+股东增持</td><td class="">换手板</td><td class="num">0.02</td><td class="num">9</td><td class="">09:31:13</td></tr><tr><td class="">2 板</td><td class="">600838</td><td class="">上海九百</td><td class="">一般零售</td><td class="">商贸零售+商业地产+洗染服务</td><td class="">换手板</td><td class="num">0.45</td><td class="num">0</td><td class="">10:52:37</td></tr><tr><td class="">2 板</td><td class="">603330</td><td class="">天洋新材</td><td class="">塑料</td><td class="">电子胶+光模块胶+热熔胶+“羊”字辈</td><td class="">换手板</td><td class="num">0.46</td><td class="num">0</td><td class="">13:54:02</td></tr></tbody></table><h3>断板观察（昨 ≥2 板今日大跌）</h3><table><thead><tr><th class="">代码</th><th class="">名称</th><th class="">行业</th><th class="num">昨连板</th><th class="num">今日</th></tr></thead><tbody><tr><td class="">002347</td><td class="">泰尔股份</td><td class="">通用设备</td><td class="num">2</td><td class="num"><span class="down">-10.04%</span></td></tr><tr><td class="">603636</td><td class="">南威软件</td><td class="">IT服务Ⅱ</td><td class="num">2</td><td class="num"><span class="down">-10.02%</span></td></tr><tr><td class="">002835</td><td class="">同为股份</td><td class="">计算机设</td><td class="num">2</td><td class="num"><span class="down">-10.01%</span></td></tr><tr><td class="">001239</td><td class="">永达股份</td><td class="">工程机械</td><td class="num">2</td><td class="num"><span class="down">-9.97%</span></td></tr><tr><td class="">002181</td><td class="">粤 传 媒</td><td class="">出版</td><td class="num">2</td><td class="num"><span class="down">-9.96%</span></td></tr><tr><td class="">600178</td><td class="">东安动力</td><td class="">汽车零部</td><td class="num">4</td><td class="num"><span class="down">-9.96%</span></td></tr><tr><td class="">603696</td><td class="">安记食品</td><td class="">调味发酵</td><td class="num">2</td><td class="num"><span class="down">-6.82%</span></td></tr><tr><td class="">002696</td><td class="">百洋股份</td><td class="">饲料</td><td class="num">2</td><td class="num"><span class="down">-6.75%</span></td></tr></tbody></table>
+  </section>
+
+  <section>
+    <h2>一板 → 二板候选</h2>
+    <div class="note"><b>环境闸门「空仓」</b>：以下只为观察名单，剧本用于「假设可做」时判断盘口强弱，空仓档不下单；待情绪修复（R-ENV-03）再按 A 级执行。</div><table><thead><tr><th class="num">#</th><th class="nw">代码</th><th class="nw">名称</th><th class="nw">行业</th><th class="nw">题材</th><th class="num nw">封单(亿)</th><th class="num nw">封单/流通</th><th class="num nw">换手</th><th class="num nw">流通(亿)</th><th class="nw nw">末封/炸板</th><th class="num nw">得分</th><th class="nw">评级</th></tr></thead><tbody><tr><td class="num">1</td><td class="nw">002249</td><td class="nw">大洋电机</td><td class="nw">电机Ⅱ</td><td class="nw">机器人关节+电机业务+数据中心风机+“羊”字辈</td><td class="num nw">2.07</td><td class="num nw">1.57%</td><td class="num nw">4.7%</td><td class="num nw">132.19</td><td class="nw nw">09:36 / 炸 0</td><td class="num nw">91</td><td class="nw"><b>A</b></td></tr><tr><td class="num">2</td><td class="nw">600698</td><td class="nw">湖南天雁</td><td class="nw">汽车零部</td><td class="nw">涡轮增压器+电子水泵+汽车零部件</td><td class="num nw">0.37</td><td class="num nw">0.58%</td><td class="num nw">9.4%</td><td class="num nw">63.03</td><td class="nw nw">10:44 / 炸 0</td><td class="num nw">82</td><td class="nw"><b>A</b></td></tr><tr><td class="num">3</td><td class="nw">603350</td><td class="nw">安乃达</td><td class="nw">电机Ⅱ</td><td class="nw">具身智能+两轮电驱+系统集成</td><td class="num nw">0.54</td><td class="num nw">4.17%</td><td class="num nw">5.8%</td><td class="num nw">13.01</td><td class="nw nw">09:35 / 炸 1</td><td class="num nw">79</td><td class="nw"><b>A</b></td></tr><tr><td class="num">4</td><td class="nw">600261</td><td class="nw">阳光照明</td><td class="nw">照明设备</td><td class="nw">照明业务+LED+激光通信投资+氢能装备</td><td class="num nw">0.25</td><td class="num nw">0.52%</td><td class="num nw">5.2%</td><td class="num nw">48.06</td><td class="nw nw">09:33 / 炸 1</td><td class="num nw">69</td><td class="nw"><b>B</b></td></tr><tr><td class="num">5</td><td class="nw">603028</td><td class="nw">赛福天</td><td class="nw">通用设备</td><td class="nw">机器人腱绳+特种钢索</td><td class="num nw">0.42</td><td class="num nw">1.90%</td><td class="num nw">3.7%</td><td class="num nw">22.00</td><td class="nw nw">09:32 / 炸 0</td><td class="num nw">65</td><td class="nw"><b>B</b></td></tr></tbody></table><h3>竞价档位 → 动作（全名单通用）</h3><table><thead><tr><th class="nw">竞价幅度</th><th class="nw">解读</th><th class="">动作</th></tr></thead><tbody><tr><td class="nw"><b>≥+5%</b></td><td class="nw">强势高开</td><td class="">确认竞价量达标后打板/半路，仓位 1/2</td></tr><tr><td class="nw"><b>+2~+5%</b></td><td class="nw">正常偏强（最优区间）</td><td class="">1/2 仓，回踩不破昨收再加 1/4</td></tr><tr><td class="nw"><b>0~+2%</b></td><td class="nw">弱高开</td><td class="">仅 1/3 仓试错，破昨收即走</td></tr><tr><td class="nw"><b>-2~0%</b></td><td class="nw">低开</td><td class="">不低吸；9:30 后 5 分钟内站上昨收才给 1/3 仓</td></tr><tr><td class="nw"><b>&lt;-2%</b></td><td class="nw">破位低开</td><td class="">直接放弃（R-EXEC-02）</td></tr></tbody></table>
+    <div class="pick">
+      <div class="pick-head">
+        <b class="pick-no">1</b>
+        <b class="pick-name">大洋电机</b>
+        <span class="muted">002249 · 电机Ⅱ</span>
+        <span class="chip cat-晋级">91 分 · A 级</span>
+      </div>
+      <h4>可能晋级的原因</h4>
+      <ul class="why"><li>封板质量全池最好：09:36 早封、全天零炸板，封单 2.07 亿、占流通 1.57%</li><li>主线核心票：电机Ⅱ 7 家涨停，题材「机器人关节+电机+数据中心风机」正对当日人形机器人主线</li><li>量价位置健康：量比 3.46 属温和放量，60 日分位 0.63 不在高位；132 亿流通盘容得下大资金</li><li>风险：大市值需要持续大单，退潮日容易「一日游」</li></ul>
+      <div class="levels">
+        <span>昨收/昨日涨停价 <b>7.06</b></span>
+        <span>明日涨停价 <b>7.77</b></span>
+        <span>竞价额下限 <b>3,031 万</b></span>
+        <span>封单下限 <b>3,966 万</b></span>
+      </div>
+      <h4>明日早盘剧本</h4>
+      <table class="mini"><thead><tr><th class="nw">时间</th><th>观察什么</th><th>怎么做</th></tr></thead>
+      <tbody><tr><td class="nw">09:15-09:25</td><td>竞价成交额 ≥ 3031 万（今日成交额 5%），幅度 +2~+5%</td><td>量价同时达标 → 竞价挂单 1/2 仓</td></tr><tr><td class="nw">09:25</td><td>竞价 &lt;0% 或 竞价额 &lt; 3%（缩量高开）</td><td>不进场，等 9:30 后再判断</td></tr><tr><td class="nw">09:30-09:35</td><td>低开 -2~0% 但 5 分钟内收复昨收 7.06</td><td>可给 1/3 仓试错，跌破昨收立即止损</td></tr><tr><td class="nw">09:30-10:00</td><td>上板且封单 ≥ 3966 万（流通 0.3%）</td><td>打板进场，封单不足或炸板 1 次减半仓</td></tr><tr><td class="nw">10:00-13:00</td><td>上板但板块已分化</td><td>仓位减半，只做首封不做回封</td></tr><tr><td class="nw">14:00 后</td><td>仍未上板</td><td>不追（R-EXEC-01）；已持有则收盘不留隔夜（R-EXEC-07）</td></tr></tbody></table>
+      <p class="muted"><b>放弃条件：</b>竞价 &lt;0% 且 9:35 前未收复昨收；跌破昨收 7.06 且分时量放大；上板后 5 分钟内炸板 ≥2 次；封单 &lt; 3966 万（流通 0.3%）</p>
+      <p class="muted"><b>止损：</b>跌破 7.06（昨日涨停价）或分时均价即止损　<b>目标：</b>封板价 7.77（+10%），不封板次日竞价走　<b>仓位：</b>环境闸门正常时单票 ≤20%；半仓档 ≤10%；空仓档 0</p>
+    </div>
+    <div class="pick">
+      <div class="pick-head">
+        <b class="pick-no">2</b>
+        <b class="pick-name">湖南天雁</b>
+        <span class="muted">600698 · 汽车零部</span>
+        <span class="chip cat-晋级">82 分 · A 级</span>
+      </div>
+      <h4>可能晋级的原因</h4>
+      <ul class="why"><li>10:44 封板、零炸板、封单占流通 0.58%，换手 9.43% 充分但不臃肿</li><li>汽车零部 3 家涨停，涡轮增压器+电子水泵与机器人关节外溢沾边</li><li>量比 1.69 落在最优区间（1.5~3 倍），60 日分位 0.72 中位偏上，仍有空间</li><li>风险：板块强度弱于电机Ⅱ，缺独立催化，晋级更依赖大盘配合</li></ul>
+      <div class="levels">
+        <span>昨收/昨日涨停价 <b>7.59</b></span>
+        <span>明日涨停价 <b>8.35</b></span>
+        <span>竞价额下限 <b>2,871 万</b></span>
+        <span>封单下限 <b>1,891 万</b></span>
+      </div>
+      <h4>明日早盘剧本</h4>
+      <table class="mini"><thead><tr><th class="nw">时间</th><th>观察什么</th><th>怎么做</th></tr></thead>
+      <tbody><tr><td class="nw">09:15-09:25</td><td>竞价成交额 ≥ 2871 万（今日成交额 5%），幅度 +2~+5%</td><td>量价同时达标 → 竞价挂单 1/2 仓</td></tr><tr><td class="nw">09:25</td><td>竞价 &lt;0% 或 竞价额 &lt; 3%（缩量高开）</td><td>不进场，等 9:30 后再判断</td></tr><tr><td class="nw">09:30-09:35</td><td>低开 -2~0% 但 5 分钟内收复昨收 7.59</td><td>可给 1/3 仓试错，跌破昨收立即止损</td></tr><tr><td class="nw">09:30-10:00</td><td>上板且封单 ≥ 1891 万（流通 0.3%）</td><td>打板进场，封单不足或炸板 1 次减半仓</td></tr><tr><td class="nw">10:00-13:00</td><td>上板但板块已分化</td><td>仓位减半，只做首封不做回封</td></tr><tr><td class="nw">14:00 后</td><td>仍未上板</td><td>不追（R-EXEC-01）；已持有则收盘不留隔夜（R-EXEC-07）</td></tr></tbody></table>
+      <p class="muted"><b>放弃条件：</b>竞价 &lt;0% 且 9:35 前未收复昨收；跌破昨收 7.59 且分时量放大；上板后 5 分钟内炸板 ≥2 次；封单 &lt; 1891 万（流通 0.3%）</p>
+      <p class="muted"><b>止损：</b>跌破 7.59（昨日涨停价）或分时均价即止损　<b>目标：</b>封板价 8.35（+10%），不封板次日竞价走　<b>仓位：</b>环境闸门正常时单票 ≤20%；半仓档 ≤10%；空仓档 0</p>
+    </div>
+    <div class="pick">
+      <div class="pick-head">
+        <b class="pick-no">3</b>
+        <b class="pick-name">安乃达</b>
+        <span class="muted">603350 · 电机Ⅱ</span>
+        <span class="chip cat-晋级">79 分 · A 级</span>
+      </div>
+      <h4>可能晋级的原因</h4>
+      <ul class="why"><li>电机Ⅱ 主线内 + 具身智能/两轮电驱，09:35 早封，只炸 1 次</li><li>封单 0.54 亿、占流通 4.17%，在小盘股里锁筹极好</li><li>风险：量比 4.53 偏大、60 日分位 1.0 已在历史高位，13 亿流通盘弹性大、砸起来也快</li></ul>
+      <div class="levels">
+        <span>昨收/昨日涨停价 <b>29.48</b></span>
+        <span>明日涨停价 <b>32.43</b></span>
+        <span>竞价额下限 <b>374 万</b></span>
+        <span>封单下限 <b>390 万</b></span>
+      </div>
+      <h4>明日早盘剧本</h4>
+      <table class="mini"><thead><tr><th class="nw">时间</th><th>观察什么</th><th>怎么做</th></tr></thead>
+      <tbody><tr><td class="nw">09:15-09:25</td><td>竞价成交额 ≥ 374 万（今日成交额 5%），幅度 +2~+5%</td><td>量价同时达标 → 竞价挂单 1/2 仓</td></tr><tr><td class="nw">09:25</td><td>竞价 &lt;0% 或 竞价额 &lt; 3%（缩量高开）</td><td>不进场，等 9:30 后再判断</td></tr><tr><td class="nw">09:30-09:35</td><td>低开 -2~0% 但 5 分钟内收复昨收 29.48</td><td>可给 1/3 仓试错，跌破昨收立即止损</td></tr><tr><td class="nw">09:30-10:00</td><td>上板且封单 ≥ 390 万（流通 0.3%）</td><td>打板进场，封单不足或炸板 1 次减半仓</td></tr><tr><td class="nw">10:00-13:00</td><td>上板但板块已分化</td><td>仓位减半，只做首封不做回封</td></tr><tr><td class="nw">14:00 后</td><td>仍未上板</td><td>不追（R-EXEC-01）；已持有则收盘不留隔夜（R-EXEC-07）</td></tr></tbody></table>
+      <p class="muted"><b>放弃条件：</b>竞价 &lt;0% 且 9:35 前未收复昨收；跌破昨收 29.48 且分时量放大；上板后 5 分钟内炸板 ≥2 次；封单 &lt; 390 万（流通 0.3%）</p>
+      <p class="muted"><b>止损：</b>跌破 29.48（昨日涨停价）或分时均价即止损　<b>目标：</b>封板价 32.43（+10%），不封板次日竞价走　<b>仓位：</b>环境闸门正常时单票 ≤20%；半仓档 ≤10%；空仓档 0</p>
+    </div>
+    <div class="pick">
+      <div class="pick-head">
+        <b class="pick-no">4</b>
+        <b class="pick-name">阳光照明</b>
+        <span class="muted">600261 · 照明设备</span>
+        <span class="chip cat-晋级">69 分 · B 级</span>
+      </div>
+      <h4>可能晋级的原因</h4>
+      <ul class="why"><li>照明设备 3 家涨停，09:33 封板、封单占流通 0.52%，量比 3.9 明显放量</li><li>风险：炸 1 次、60 日分位 1.0 已在历史新高，晋级高度依赖板块延续，位置安全垫薄</li></ul>
+      <div class="levels">
+        <span>昨收/昨日涨停价 <b>3.6</b></span>
+        <span>明日涨停价 <b>3.96</b></span>
+        <span>竞价额下限 <b>1,251 万</b></span>
+        <span>封单下限 <b>1,442 万</b></span>
+      </div>
+      <h4>明日早盘剧本</h4>
+      <table class="mini"><thead><tr><th class="nw">时间</th><th>观察什么</th><th>怎么做</th></tr></thead>
+      <tbody><tr><td class="nw">09:15-09:25</td><td>竞价成交额 ≥ 1251 万（今日成交额 5%），幅度 +2~+5%</td><td>量价同时达标 → 竞价挂单 1/2 仓</td></tr><tr><td class="nw">09:25</td><td>竞价 &lt;0% 或 竞价额 &lt; 3%（缩量高开）</td><td>不进场，等 9:30 后再判断</td></tr><tr><td class="nw">09:30-09:35</td><td>低开 -2~0% 但 5 分钟内收复昨收 3.60</td><td>可给 1/3 仓试错，跌破昨收立即止损</td></tr><tr><td class="nw">09:30-10:00</td><td>上板且封单 ≥ 1442 万（流通 0.3%）</td><td>打板进场，封单不足或炸板 1 次减半仓</td></tr><tr><td class="nw">10:00-13:00</td><td>上板但板块已分化</td><td>仓位减半，只做首封不做回封</td></tr><tr><td class="nw">14:00 后</td><td>仍未上板</td><td>不追（R-EXEC-01）；已持有则收盘不留隔夜（R-EXEC-07）</td></tr></tbody></table>
+      <p class="muted"><b>放弃条件：</b>竞价 &lt;0% 且 9:35 前未收复昨收；跌破昨收 3.60 且分时量放大；上板后 5 分钟内炸板 ≥2 次；封单 &lt; 1442 万（流通 0.3%）</p>
+      <p class="muted"><b>止损：</b>跌破 3.60（昨日涨停价）或分时均价即止损　<b>目标：</b>封板价 3.96（+10%），不封板次日竞价走　<b>仓位：</b>环境闸门正常时单票 ≤20%；半仓档 ≤10%；空仓档 0</p>
+    </div>
+    <div class="pick">
+      <div class="pick-head">
+        <b class="pick-no">5</b>
+        <b class="pick-name">赛福天</b>
+        <span class="muted">603028 · 通用设备</span>
+        <span class="chip cat-晋级">65 分 · B 级</span>
+      </div>
+      <h4>可能晋级的原因</h4>
+      <ul class="why"><li>通用设备 4 家涨停，09:32 早封、零炸板、封单占流通 1.90%</li><li>机器人腱绳题材与主线沾边，22 亿小盘拉抬成本低</li><li>风险：量比仅 1.36，说明没有大资金抢筹，分位 1.0 已在高位，量能是最大短板</li></ul>
+      <div class="levels">
+        <span>昨收/昨日涨停价 <b>7.76</b></span>
+        <span>明日涨停价 <b>8.54</b></span>
+        <span>竞价额下限 <b>405 万</b></span>
+        <span>封单下限 <b>660 万</b></span>
+      </div>
+      <h4>明日早盘剧本</h4>
+      <table class="mini"><thead><tr><th class="nw">时间</th><th>观察什么</th><th>怎么做</th></tr></thead>
+      <tbody><tr><td class="nw">09:15-09:25</td><td>竞价成交额 ≥ 405 万（今日成交额 5%），幅度 +2~+5%</td><td>量价同时达标 → 竞价挂单 1/2 仓</td></tr><tr><td class="nw">09:25</td><td>竞价 &lt;0% 或 竞价额 &lt; 3%（缩量高开）</td><td>不进场，等 9:30 后再判断</td></tr><tr><td class="nw">09:30-09:35</td><td>低开 -2~0% 但 5 分钟内收复昨收 7.76</td><td>可给 1/3 仓试错，跌破昨收立即止损</td></tr><tr><td class="nw">09:30-10:00</td><td>上板且封单 ≥ 660 万（流通 0.3%）</td><td>打板进场，封单不足或炸板 1 次减半仓</td></tr><tr><td class="nw">10:00-13:00</td><td>上板但板块已分化</td><td>仓位减半，只做首封不做回封</td></tr><tr><td class="nw">14:00 后</td><td>仍未上板</td><td>不追（R-EXEC-01）；已持有则收盘不留隔夜（R-EXEC-07）</td></tr></tbody></table>
+      <p class="muted"><b>放弃条件：</b>竞价 &lt;0% 且 9:35 前未收复昨收；跌破昨收 7.76 且分时量放大；上板后 5 分钟内炸板 ≥2 次；封单 &lt; 660 万（流通 0.3%）</p>
+      <p class="muted"><b>止损：</b>跌破 7.76（昨日涨停价）或分时均价即止损　<b>目标：</b>封板价 8.54（+10%），不封板次日竞价走　<b>仓位：</b>环境闸门正常时单票 ≤20%；半仓档 ≤10%；空仓档 0</p>
+    </div>
+    <details><summary>落选原因（17 只被 RULES.md 硬门槛剔除，点开查看）</summary><table><thead><tr><th class="">代码</th><th class="">名称</th><th class="">行业</th><th class="">剔除原因</th></tr></thead><tbody><tr><td class="">001360</td><td class="">南矿集团</td><td class="">专用设备</td><td class="">换手 1.0% 不在 3~15%（R-POOL-06）</td></tr><tr><td class="">002307</td><td class="">北新路桥</td><td class="">基础建设</td><td class="">炸板 6 次（R-POOL-03）；封单占流通 0.22% &lt; 0.3%（R-POOL-04）；行业涨停 1 家 &lt; 3 且不在主线题材（R-POOL-07）</td></tr><tr><td class="">003021</td><td class="">兆威机电</td><td class="">电机Ⅱ</td><td class="">炸板 2 次（R-POOL-03）</td></tr><tr><td class="">000530</td><td class="">冰山冷热</td><td class="">通用设备</td><td class="">尾盘封 14:39:15（R-POOL-02）；炸板 6 次（R-POOL-03）；换手 45.4% 不在 3~15%（R-POOL-06）</td></tr><tr><td class="">300839</td><td class="">博汇股份</td><td class="">炼化及贸</td><td class="">20cm板（R-POOL-01）；尾盘封 15:00:00（R-POOL-02）；炸板 3 次（R-POOL-03）</td></tr><tr><td class="">301502</td><td class="">华阳智能</td><td class="">电机Ⅱ</td><td class="">20cm板（R-POOL-01）；炸板 3 次（R-POOL-03）</td></tr><tr><td class="">601091</td><td class="">沈鼓集团</td><td class="">专用设备</td><td class="">尾盘封 15:00:00（R-POOL-02）；炸板 9 次（R-POOL-03）；换手 48.2% 不在 3~15%（R-POOL-06）</td></tr><tr><td class="">603728</td><td class="">鸣志电器</td><td class="">电机Ⅱ</td><td class="">尾盘封 14:56:52（R-POOL-02）；炸板 6 次（R-POOL-03）；封单占流通 0.01% &lt; 0.3%（R-POOL-04）</td></tr><tr><td class="">603280</td><td class="">南方路机</td><td class="">工程机械</td><td class="">行业涨停 2 家 &lt; 3 且不在主线题材（R-POOL-07）</td></tr><tr><td class="">002097</td><td class="">山河智能</td><td class="">工程机械</td><td class="">炸板 2 次（R-POOL-03）；行业涨停 2 家 &lt; 3 且不在主线题材（R-POOL-07）</td></tr><tr><td class="">603089</td><td class="">正裕工业</td><td class="">汽车零部</td><td class="">尾盘封 14:36:54（R-POOL-02）；炸板 2 次（R-POOL-03）；封单占流通 0.27% &lt; 0.3%（R-POOL-04）</td></tr><tr><td class="">000678</td><td class="">襄阳轴承</td><td class="">汽车零部</td><td class="">换手 15.9% 不在 3~15%（R-POOL-06）</td></tr><tr><td class="">600192</td><td class="">长城电工</td><td class="">电网设备</td><td class="">行业涨停 1 家 &lt; 3 且不在主线题材（R-POOL-07）</td></tr><tr><td class="">301023</td><td class="">奕帆传动</td><td class="">电机Ⅱ</td><td class="">20cm板（R-POOL-01）；尾盘封 14:49:24（R-POOL-02）；炸板 3 次（R-POOL-03）；换手 20.7% 不在 3~15%（R-POOL-06）</td></tr><tr><td class="">603933</td><td class="">睿能科技</td><td class="">其他电子</td><td class="">换手 2.7% 不在 3~15%（R-POOL-06）</td></tr><tr><td class="">002983</td><td class="">芯瑞达</td><td class="">光学光电</td><td class="">尾盘封 14:35:15（R-POOL-02）；行业涨停 0 家 &lt; 3 且不在主线题材（R-POOL-07）</td></tr><tr><td class="">603370</td><td class="">华新精科</td><td class="">电机Ⅱ</td><td class="">尾盘封 14:53:19（R-POOL-02）；封单占流通 0.20% &lt; 0.3%（R-POOL-04）</td></tr></tbody></table></details>
+  </section>
+
+  <section>
+    <h2>昨日名单回填</h2>
+    <p class="muted">回填 2026-10-21 名单：2/5 晋级，命中率 40.0%（来源格式：legacy）</p><p class="muted">失败归因分布：<b>情绪 1 · 个股 2 · 晋级 2</b>（口径：大盘=指数系统性下跌；情绪=炸板率/晋级率/跌停数；板块=所属行业涨停骤减或题材掉出主线；个股=昨日封板质量差/反包/今日天量）</p><table><thead><tr><th class="nw">代码</th><th class="nw">名称</th><th class="num nw">昨得分</th><th class="nw">昨评级</th><th class="num nw">今日</th><th class="num nw">换手</th><th class="nw">触板</th><th class="nw">结果</th><th class="nw">归因</th></tr></thead><tbody><tr><td class="nw">688500</td><td class="nw">慧辰股份</td><td class="num nw">85</td><td class="nw"></td><td class="num nw"><span class="up">+4.63%</span></td><td class="num nw">15.58%</td><td class="nw">否</td><td class="nw"><b class="down">失败</b></td><td class="nw"><span class="chip cat-个股">个股</span></td></tr><tr><td class="nw">603138</td><td class="nw">海量数据</td><td class="num nw">82</td><td class="nw"></td><td class="num nw"><span class="up">+10.01%</span></td><td class="num nw">20.74%</td><td class="nw">是</td><td class="nw"><b class="up">晋级二板</b></td><td class="nw"><span class="chip cat-晋级">晋级</span></td></tr><tr><td class="nw">601999</td><td class="nw">出版传媒</td><td class="num nw">78</td><td class="nw"></td><td class="num nw"><span class="up">+10.00%</span></td><td class="num nw">16.89%</td><td class="nw">是</td><td class="nw"><b class="up">晋级二板</b></td><td class="nw"><span class="chip cat-晋级">晋级</span></td></tr><tr><td class="nw">301159</td><td class="nw">三维天地</td><td class="num nw">77</td><td class="nw"></td><td class="num nw"><span class="down">-1.47%</span></td><td class="num nw">32.99%</td><td class="nw">否</td><td class="nw"><b class="down">失败</b></td><td class="nw"><span class="chip cat-情绪">情绪</span></td></tr><tr><td class="nw">603999</td><td class="nw">读者传媒</td><td class="num nw">75</td><td class="nw"></td><td class="num nw"><span class="down">-8.03%</span></td><td class="num nw">8.92%</td><td class="nw">否</td><td class="nw"><b class="down">失败</b></td><td class="nw"><span class="chip cat-个股">个股</span></td></tr></tbody></table><h3>逐只归因依据</h3><table><tbody><tr><td class="nw" style="vertical-align:top"><b>688500 慧辰股份</b></td><td class="nw" style="vertical-align:top"><span class="chip cat-个股">个股</span> <span class="muted">叠加 板块</span></td><td>昨日 15:00 才封板（尾盘弱封）；昨日炸板 1 次；叠加 板块：IT服务Ⅱ 涨停 5 → 1 家<div class="note" style="margin-top:6px">尾盘 15:00 才回封的弱板，今天 IT服务Ⅱ 涨停 5→1、数据要素掉出主线，开盘 -3.35% 后冲高 +8.84% 就回落；20cm 还要再涨 20%，弱封 + 退潮叠加，本来就没有晋级可能。</div></td></tr><tr><td class="nw" style="vertical-align:top"><b>603138 海量数据</b></td><td class="nw" style="vertical-align:top"><span class="chip cat-晋级">晋级</span></td><td>今日封住二板，收 +10.01%<div class="note" style="margin-top:6px">一字开盘靠惯性封住二板，但盘中炸 5 次、13:03 才回封、封单从 0.88 亿缩到 0.18 亿——晋级质量差，次日溢价不看好。</div></td></tr><tr><td class="nw" style="vertical-align:top"><b>601999 出版传媒</b></td><td class="nw" style="vertical-align:top"><span class="chip cat-晋级">晋级</span></td><td>今日封住二板，收 +10.00%<div class="note" style="margin-top:6px">炸 10 次、14:53 才回封、封单只剩 402 万；出版 3→1 家还能封住是资金硬做，典型「晋级但不可交易」。</div></td></tr><tr><td class="nw" style="vertical-align:top"><b>301159 三维天地</b></td><td class="nw" style="vertical-align:top"><span class="chip cat-情绪">情绪</span> <span class="muted">叠加 板块</span></td><td>情绪「退潮」：炸板率 41.1%、晋级率 17.6%、跌停 49 / 涨停 33；叠加 板块：题材「AI应用、具身机器人」已退出当日主线<div class="note" style="margin-top:6px">昨天 11:21 封板还带 3 倍量，今天 -0.64% 开、冲高 +12.23% 后放 32.99% 天量收 -1.47%，是标准出货；退潮日高位 20cm 直接被杀，情绪因素大于个股。</div></td></tr><tr><td class="nw" style="vertical-align:top"><b>603999 读者传媒</b></td><td class="nw" style="vertical-align:top"><span class="chip cat-个股">个股</span> <span class="muted">叠加 板块</span></td><td>昨日 13:06 才封板（尾盘弱封）；前一交易日 -9.95%（跌停后反包板）；叠加 板块：出版 涨停 3 → 1 家<div class="note" style="margin-top:6px">前一日 -9.95% 的反包板、13:06 尾盘才封；今天开盘 -0.94% 即全天最高，出版退潮 → 闷杀 -8.03%。</div></td></tr></tbody></table>
+  </section>
+
+  <section>
+    <h2>N字战法候选（首板 → 缩量调整 → 待再启动）</h2>
+    <p class="muted">可算 2 只 · 命中 2 只</p><table><thead><tr><th class="num">#</th><th class="">代码</th><th class="">名称</th><th class="">题材</th><th class="">首板日</th><th class="num">调整(天)</th><th class="">支撑</th><th class="num">量比</th><th class="num">触发价</th><th class="num">距触发价</th><th class="num">股价</th><th class="num">流通(亿)</th><th class="num">得分</th></tr></thead><tbody><tr><td class="num">1</td><td class="">000518</td><td class="">四环生物</td><td class="">中润收购、生物医药</td><td class="">2026-10-21</td><td class="num">1</td><td class="">中</td><td class="num">0.97</td><td class="num">3.8</td><td class="num"><span class="up">+6.10%</span></td><td class="num">3.58</td><td class="num">36.9</td><td class="num">65</td></tr><tr><td class="num">2</td><td class="">002596</td><td class="">海南瑞泽</td><td class="">商品混凝土、市政环卫</td><td class="">2026-10-20</td><td class="num">2</td><td class="">弱</td><td class="num">0.68</td><td class="num">3.5</td><td class="num"><span class="up">+6.10%</span></td><td class="num">3.3</td><td class="num">37.8</td><td class="num">64</td></tr></tbody></table><details><summary>漏斗淘汰明细</summary><p class="muted">近4日无涨停 4855；调整跌破首板最低价（形态失效） 7；首板未倍量（&lt;前5日均量2倍） 68；首板前一交易日也涨停（连板） 34；首板非实体板（一字/T字） 7；调整期未缩量（均量≥首板量） 29；调整期放量下跌 8；今日涨停（再启动已走完） 2；流通市值不在 30~100 亿 2；股价不在 3~20 元 3</p></details>
+  </section>
+
+  <section>
+    <h2>风险提示与纪律</h2>
+    <ul class="risk">
+      <li>本报告为复盘参考，<b>非投资建议</b>，据此操作风险自负。</li>
+      <li>情绪档位为冰点/退潮时：只列名单、不建议接力，宁空仓。</li>
+      <li>N字买点：次日<b>放量（≥调整期均量1.5倍）站上触发价（箱体上沿）</b>才买；跌破<b>首板最低价</b>、或首板后 5 个交易日仍不启动 → 形态失败，按纪律止损。</li>
+      <li>一进二：次日未能封二板按打板纪律处理。</li>
+    </ul>
+    <div class="note">昨日名单 2/5 晋级，但两只都是烂板（出版传媒炸 10 次、封单 402 万），名义晋级 ≠ 可交易，盈亏比才是结果。；今日 24 只首板 17 只过不了门槛：尾盘封（华新精科 14:53、鸣志 14:56）、20cm、炸板≥2（山河智能、奕帆传动）、封单&lt;0.3%、换手&gt;15%（襄阳轴承）各占一批——新规则把昨日踩过的坑挡住了。；2026-10-22 起废除流通市值门槛（原 R-POOL-06 30~100 亿）：大洋电机 132 亿、安乃达 13 亿得以入池，市值只作为排序偏好（≤60 亿 +10 / 60~150 亿 +7 / &gt;150 亿 +4）。；退潮日基准：昨日首板 35 只今天只有 5 只晋级（14.3%）、中位 -2.73%，空仓是唯一正解。</div>
+  </section>
+
+  <footer>由 stock-daily 技能生成 · 数据来源：a-stock-data（东财 / 同花顺 / 腾讯 / 交易所官方）</footer>
+</div>
+</body>
+</html>
