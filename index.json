@@ -1,7 +1,7 @@
 {
  "schema": "stock-daily.index",
  "schema_version": "1.0",
- "updated_at": "2026-10-22T22:30:28+08:00",
+ "updated_at": "2026-10-23T22:14:45+08:00",
  "days": [
   {
    "date": "2026-10-21",
@@ -54,29 +54,70 @@
    ],
    "report": "2026-10-22/report.json",
    "html": "2026-10-22/report.html"
+  },
+  {
+   "date": "2026-10-23",
+   "format": "v1.0",
+   "mood": "修复",
+   "gate": "正常",
+   "zt_count": 82,
+   "dt_count": 6,
+   "break_rate": 12.8,
+   "advance_rate": 39.4,
+   "max_height": 6,
+   "oneb_pool": 70,
+   "oneb_ranked": 8,
+   "oneb_hit_rate": 0.2,
+   "attribution_summary": {
+    "板块": 3,
+    "个股": 1,
+    "晋级": 1
+   },
+   "top_codes": [
+    "600215",
+    "002026",
+    "000559",
+    "002322",
+    "001301"
+   ],
+   "external": {
+    "tone": "中性",
+    "score": -1,
+    "us_avg": -0.61,
+    "a50_pct": -0.35,
+    "week": {
+     "tone": "中性",
+     "score": -1,
+     "us_cum": -0.79,
+     "a50_cum": -2.26
+    },
+    "event_level": "高"
+   },
+   "report": "2026-10-23/report.json",
+   "html": "2026-10-23/report.html"
   }
  ],
  "attribution_rollup": {
   "window": 20,
-  "days": 1,
+  "days": 2,
   "date_range": [
    "2026-10-22",
-   "2026-10-22"
+   "2026-10-23"
   ],
   "totals": {
    "大盘": 0,
    "情绪": 1,
-   "板块": 0,
-   "个股": 2,
-   "晋级": 2,
+   "板块": 3,
+   "个股": 3,
+   "晋级": 3,
    "数据不足": 0
   },
-  "failed_total": 3,
+  "failed_total": 7,
   "share_of_failed": {
    "大盘": 0.0,
-   "情绪": 0.333,
-   "板块": 0.0,
-   "个股": 0.667
+   "情绪": 0.143,
+   "板块": 0.429,
+   "个股": 0.429
   }
  }
 }
