@@ -2,7 +2,7 @@
  "schema": "stock-daily.report",
  "schema_version": "1.0",
  "date": "2026-10-23",
- "generated_at": "2026-10-23T22:14:45+08:00",
+ "generated_at": "2026-10-24T21:41:26+08:00",
  "session": {
   "data_time": "15:00",
   "is_trading_day": true,
@@ -42,7 +42,7 @@
   }
  ],
  "rules": {
-  "rules_version": "1.9",
+  "rules_version": "1.13",
   "gate": "正常",
   "gate_hits": [],
   "applied": [
@@ -4691,6 +4691,64 @@
      "stop_loss": "跌破 6.34（昨日涨停价）或分时均价即止损",
      "target": "封板价 6.97（+10%），不封板次日竞价走",
      "position": "环境闸门正常时单票 ≤20%；半仓档 ≤10%；空仓档 0",
+     "leader": {
+      "code": "603933",
+      "name": "睿能科技",
+      "industry": "其他电子",
+      "limit_days": 2,
+      "seal_fund": 98828654,
+      "break_times": 0,
+      "first_seal": "09:25:02",
+      "last_seal": "09:25:02",
+      "link": "题材「工业自动化」",
+      "shared_themes": [
+       "工业自动化"
+      ],
+      "reference_price": 20.94,
+      "limit_up_next": 23.03
+     },
+     "market_leader": {
+      "code": "603278",
+      "name": "大业股份",
+      "industry": "通用设备",
+      "limit_days": 6,
+      "seal_fund": 94790445,
+      "break_times": 0,
+      "first_seal": "13:09:45",
+      "last_seal": "13:09:45",
+      "link": "市场空间板",
+      "shared_themes": [],
+      "reference_price": 15.96,
+      "limit_up_next": 17.56
+     },
+     "peer": null,
+     "leader_watch": [
+      {
+       "time": "09:15-09:25",
+       "watch": "睿能科技（2 板，题材「工业自动化」）竞价 ≥+3% 且量能达标",
+       "do": "候选按剧本执行；龙头强 = 接力氛围在"
+      },
+      {
+       "time": "09:15-09:25",
+       "watch": "睿能科技 竞价 <0% 或大幅低开",
+       "do": "候选直接放弃（龙头走弱，补涨股最先被卖）"
+      },
+      {
+       "time": "09:30-09:35",
+       "watch": "睿能科技 5 分钟内秒板 / 或开盘即翻绿",
+       "do": "秒板 → 候选可提前半路；翻绿 → 候选只观察"
+      },
+      {
+       "time": "09:30-14:00",
+       "watch": "睿能科技 炸板 ≥2 次或全天翻绿",
+       "do": "候选降级：只打首封、仓位减半；已持有当日不加仓"
+      },
+      {
+       "time": "情绪天花板",
+       "watch": "空间板 大业股份（6 板）能否封住",
+       "do": "空间板断板/大面 → 全天候选只观察（退潮确认）"
+      }
+     ],
      "why": [
       "板块：自动化设备今日 5 家涨停，机器人产业链从电机/减速器扩散到本体集成，派斯林属「本体+集成」位置，是扩散的受益端。",
       "筹码：流通 28.97 亿，是名单里最小的一档；封单 2420 万占流通 0.84%、零炸板、换手 5.36%，属「小盘 + 封得住 + 没换手过头」。",
@@ -4806,6 +4864,64 @@
      "stop_loss": "跌破 11.04（昨日涨停价）或分时均价即止损",
      "target": "封板价 12.14（+10%），不封板次日竞价走",
      "position": "环境闸门正常时单票 ≤20%；半仓档 ≤10%；空仓档 0",
+     "leader": {
+      "code": "002535",
+      "name": "林州重机",
+      "industry": "专用设备",
+      "limit_days": 2,
+      "seal_fund": 36322506,
+      "break_times": 0,
+      "first_seal": "09:30:00",
+      "last_seal": "09:30:00",
+      "link": "题材「机器人」",
+      "shared_themes": [
+       "机器人"
+      ],
+      "reference_price": 3.03,
+      "limit_up_next": 3.33
+     },
+     "market_leader": {
+      "code": "603278",
+      "name": "大业股份",
+      "industry": "通用设备",
+      "limit_days": 6,
+      "seal_fund": 94790445,
+      "break_times": 0,
+      "first_seal": "13:09:45",
+      "last_seal": "13:09:45",
+      "link": "市场空间板",
+      "shared_themes": [],
+      "reference_price": 15.96,
+      "limit_up_next": 17.56
+     },
+     "peer": null,
+     "leader_watch": [
+      {
+       "time": "09:15-09:25",
+       "watch": "林州重机（2 板，题材「机器人」）竞价 ≥+3% 且量能达标",
+       "do": "候选按剧本执行；龙头强 = 接力氛围在"
+      },
+      {
+       "time": "09:15-09:25",
+       "watch": "林州重机 竞价 <0% 或大幅低开",
+       "do": "候选直接放弃（龙头走弱，补涨股最先被卖）"
+      },
+      {
+       "time": "09:30-09:35",
+       "watch": "林州重机 5 分钟内秒板 / 或开盘即翻绿",
+       "do": "秒板 → 候选可提前半路；翻绿 → 候选只观察"
+      },
+      {
+       "time": "09:30-14:00",
+       "watch": "林州重机 炸板 ≥2 次或全天翻绿",
+       "do": "候选降级：只打首封、仓位减半；已持有当日不加仓"
+      },
+      {
+       "time": "情绪天花板",
+       "watch": "空间板 大业股份（6 板）能否封住",
+       "do": "空间板断板/大面 → 全天候选只观察（退潮确认）"
+      }
+     ],
      "why": [
       "板块：通用设备 5 家涨停，机器人+换电站双题材，属于主线扩散中「设备端」的代表。",
       "封板：封单 5961 万占流通 1.23%，为名单最高档（R-SCORE-01 封单 ≥1% 满分），13:24 首封、13:31 回封，回封时间仅 6 分钟，说明抛压被快速吃掉。",
@@ -4921,6 +5037,64 @@
      "stop_loss": "跌破 11.55（昨日涨停价）或分时均价即止损",
      "target": "封板价 12.71（+10%），不封板次日竞价走",
      "position": "环境闸门正常时单票 ≤20%；半仓档 ≤10%；空仓档 0",
+     "leader": {
+      "code": "002535",
+      "name": "林州重机",
+      "industry": "专用设备",
+      "limit_days": 2,
+      "seal_fund": 36322506,
+      "break_times": 0,
+      "first_seal": "09:30:00",
+      "last_seal": "09:30:00",
+      "link": "题材「机器人」",
+      "shared_themes": [
+       "机器人"
+      ],
+      "reference_price": 3.03,
+      "limit_up_next": 3.33
+     },
+     "market_leader": {
+      "code": "603278",
+      "name": "大业股份",
+      "industry": "通用设备",
+      "limit_days": 6,
+      "seal_fund": 94790445,
+      "break_times": 0,
+      "first_seal": "13:09:45",
+      "last_seal": "13:09:45",
+      "link": "市场空间板",
+      "shared_themes": [],
+      "reference_price": 15.96,
+      "limit_up_next": 17.56
+     },
+     "peer": null,
+     "leader_watch": [
+      {
+       "time": "09:15-09:25",
+       "watch": "林州重机（2 板，题材「机器人」）竞价 ≥+3% 且量能达标",
+       "do": "候选按剧本执行；龙头强 = 接力氛围在"
+      },
+      {
+       "time": "09:15-09:25",
+       "watch": "林州重机 竞价 <0% 或大幅低开",
+       "do": "候选直接放弃（龙头走弱，补涨股最先被卖）"
+      },
+      {
+       "time": "09:30-09:35",
+       "watch": "林州重机 5 分钟内秒板 / 或开盘即翻绿",
+       "do": "秒板 → 候选可提前半路；翻绿 → 候选只观察"
+      },
+      {
+       "time": "09:30-14:00",
+       "watch": "林州重机 炸板 ≥2 次或全天翻绿",
+       "do": "候选降级：只打首封、仓位减半；已持有当日不加仓"
+      },
+      {
+       "time": "情绪天花板",
+       "watch": "空间板 大业股份（6 板）能否封住",
+       "do": "空间板断板/大面 → 全天候选只观察（退潮确认）"
+      }
+     ],
      "why": [
       "板块：汽车零部 6 家涨停，机器人（轴承/轮毂单元）是汽车零部件公司最顺的题材嫁接，板块强度满分。",
       "封板：13:55 封、零炸板、封单 1.61 亿，绝对金额是名单第二大，说明有资金愿意在 13:55 这个位置接着买。",
@@ -5036,6 +5210,62 @@
      "stop_loss": "跌破 13.67（昨日涨停价）或分时均价即止损",
      "target": "封板价 15.04（+10%），不封板次日竞价走",
      "position": "环境闸门正常时单票 ≤20%；半仓档 ≤10%；空仓档 0",
+     "leader": {
+      "code": "603528",
+      "name": "多伦科技",
+      "industry": "软件开发",
+      "limit_days": 2,
+      "seal_fund": 75309611,
+      "break_times": 0,
+      "first_seal": "13:19:25",
+      "last_seal": "13:19:25",
+      "link": "行业 软件开发",
+      "shared_themes": [],
+      "reference_price": 8.14,
+      "limit_up_next": 8.95
+     },
+     "market_leader": {
+      "code": "603278",
+      "name": "大业股份",
+      "industry": "通用设备",
+      "limit_days": 6,
+      "seal_fund": 94790445,
+      "break_times": 0,
+      "first_seal": "13:09:45",
+      "last_seal": "13:09:45",
+      "link": "市场空间板",
+      "shared_themes": [],
+      "reference_price": 15.96,
+      "limit_up_next": 17.56
+     },
+     "peer": null,
+     "leader_watch": [
+      {
+       "time": "09:15-09:25",
+       "watch": "多伦科技（2 板，行业 软件开发）竞价 ≥+3% 且量能达标",
+       "do": "候选按剧本执行；龙头强 = 接力氛围在"
+      },
+      {
+       "time": "09:15-09:25",
+       "watch": "多伦科技 竞价 <0% 或大幅低开",
+       "do": "候选直接放弃（龙头走弱，补涨股最先被卖）"
+      },
+      {
+       "time": "09:30-09:35",
+       "watch": "多伦科技 5 分钟内秒板 / 或开盘即翻绿",
+       "do": "秒板 → 候选可提前半路；翻绿 → 候选只观察"
+      },
+      {
+       "time": "09:30-14:00",
+       "watch": "多伦科技 炸板 ≥2 次或全天翻绿",
+       "do": "候选降级：只打首封、仓位减半；已持有当日不加仓"
+      },
+      {
+       "time": "情绪天花板",
+       "watch": "空间板 大业股份（6 板）能否封住",
+       "do": "空间板断板/大面 → 全天候选只观察（退潮确认）"
+      }
+     ],
      "why": [
       "板块：软件开发 7 家涨停，AI 应用是机器人之外第二条主线，理工能科同时挂「电力软件 + 业绩预增」，题材辨识度不低。",
       "封板：13:02 封、零炸板、封单 6479 万占流通 1.35%，封板质量项拿满 20 分，是本名单封板最扎实的一只。",
@@ -5151,6 +5381,47 @@
      "stop_loss": "跌破 45.71（昨日涨停价）或分时均价即止损",
      "target": "封板价 50.28（+10%），不封板次日竞价走",
      "position": "环境闸门正常时单票 ≤20%；半仓档 ≤10%；空仓档 0",
+     "leader": null,
+     "market_leader": {
+      "code": "603278",
+      "name": "大业股份",
+      "industry": "通用设备",
+      "limit_days": 6,
+      "seal_fund": 94790445,
+      "break_times": 0,
+      "first_seal": "13:09:45",
+      "last_seal": "13:09:45",
+      "link": "市场空间板",
+      "shared_themes": [],
+      "reference_price": 15.96,
+      "limit_up_next": 17.56
+     },
+     "peer": {
+      "code": "002812",
+      "name": "恩捷股份",
+      "industry": "电池",
+      "limit_days": 1,
+      "seal_fund": 73405026,
+      "break_times": 0,
+      "first_seal": "14:41:57",
+      "last_seal": "14:41:57",
+      "link": "行业 电池",
+      "shared_themes": [],
+      "reference_price": 46.92,
+      "limit_up_next": 51.61
+     },
+     "leader_watch": [
+      {
+       "time": "09:15-09:25",
+       "watch": "本板块无更高板，龙头未确立（同板最强为 恩捷股份，同为 1 板），以自身竞价与量能为主",
+       "do": "候选需自己充当龙头：竞价 +2~+5% 且量能达标才做；同板分出胜负前不重仓"
+      },
+      {
+       "time": "情绪天花板",
+       "watch": "空间板 大业股份（6 板）能否封住",
+       "do": "空间板断板/大面 → 全天候选只观察（退潮确认）"
+      }
+     ],
      "why": [
       "位置：60 日分位 0.20，是全名单唯一处于低位的票，左侧套牢盘少，回撤空间有限。",
       "基本面驱动：负极材料 + 三季报增长 + 产能扩建，属业绩逻辑而非纯情绪，普涨退潮时抗跌性更好。",
@@ -5662,22 +5933,262 @@
   }
  },
  "n": {
-  "pool_size": 5018,
-  "top": [],
+  "pool_size": 5011,
+  "rules": "妖N（逐字稿 08/09/11/12/14/16/46/57）",
+  "top": [
+   {
+    "code": "000518",
+    "name": "四环生物",
+    "theme": "中润收购、生物医药",
+    "score": 71,
+    "score_base": 72,
+    "minute_bonus": 14,
+    "shape": "盘中下杀回封顶",
+    "shape_score": 10,
+    "vol10_ratio": 0.362,
+    "peak_dir": "向下",
+    "shape_note": "十点量比 0.36（极缩，好）；量峰向下（不是向上产物）",
+    "first_date": "2026-10-21",
+    "pull_days": 2,
+    "pull_vol_ratio": 0.8,
+    "support": "弱",
+    "trigger": 3.8,
+    "dist_pct": 10.5,
+    "price": 3.44,
+    "mcap": 35.4,
+    "f_pct": 10.0,
+    "ma_bull": false,
+    "fanbao": true,
+    "ntype": "中阳",
+    "retr": 0.576,
+    "buy_mode": "aggressive",
+    "buy_mode_txt": "上升周期可做（五～六档）：缩量十字星/小阳更佳",
+    "zone_high": 3.43,
+    "zone_low": 3.37,
+    "focus_price": 3.37,
+    "stop_loss": 3.27,
+    "target": 3.62,
+    "tol_pct": 1.5,
+    "pos60": 0.39,
+    "zt_gene": true,
+    "score_raw": 86,
+    "actionable": false
+   },
+   {
+    "code": "002626",
+    "name": "金达威",
+    "theme": "巴西甜蛋白、藻油",
+    "score": 63,
+    "score_base": 70,
+    "minute_bonus": 8,
+    "shape": "震荡上行顶",
+    "shape_score": 8,
+    "vol10_ratio": 0.804,
+    "peak_dir": "向上",
+    "shape_note": "十点量比 0.80（≥0.8 早盘出货嫌疑 [16]）；量峰向上（向上产物）",
+    "first_date": "2026-10-19",
+    "pull_days": 4,
+    "pull_vol_ratio": 0.74,
+    "support": "中",
+    "trigger": 19.13,
+    "dist_pct": 2.6,
+    "price": 18.65,
+    "mcap": 113.7,
+    "f_pct": 10.0,
+    "ma_bull": true,
+    "fanbao": true,
+    "ntype": "中阳",
+    "retr": -0.162,
+    "buy_mode": "above",
+    "buy_mode_txt": "已站上前高（第三笔已启动）：不追，等回踩六七八或突破后回抽",
+    "zone_high": 17.38,
+    "zone_low": 17.04,
+    "focus_price": 17.04,
+    "stop_loss": 16.02,
+    "target": 19.52,
+    "tol_pct": 4.5,
+    "pos60": 1.0,
+    "zt_gene": true,
+    "score_raw": 78,
+    "actionable": false
+   },
+   {
+    "code": "600329",
+    "name": "达仁堂",
+    "theme": "中药、速效救心丸",
+    "score": 61,
+    "score_base": 65,
+    "minute_bonus": 11,
+    "shape": "震荡上行顶",
+    "shape_score": 8,
+    "vol10_ratio": 0.717,
+    "peak_dir": "向上",
+    "shape_note": "十点量比 0.72（一般）；量峰向上（向上产物）",
+    "first_date": "2026-10-19",
+    "pull_days": 4,
+    "pull_vol_ratio": 0.69,
+    "support": "中",
+    "trigger": 42.7,
+    "dist_pct": 3.9,
+    "price": 41.08,
+    "mcap": 233.0,
+    "f_pct": 10.0,
+    "ma_bull": true,
+    "fanbao": false,
+    "ntype": "中阳",
+    "retr": -0.043,
+    "buy_mode": "above",
+    "buy_mode_txt": "已站上前高（第三笔已启动）：不追，等回踩六七八或突破后回抽",
+    "zone_high": 38.69,
+    "zone_low": 37.94,
+    "focus_price": 37.94,
+    "stop_loss": 35.24,
+    "target": 44.15,
+    "tol_pct": 4.5,
+    "pos60": 1.0,
+    "zt_gene": true,
+    "score_raw": 76,
+    "actionable": false
+   },
+   {
+    "code": "688608",
+    "name": "恒玄科技",
+    "theme": "AI眼镜、低功耗SoC",
+    "score": 57,
+    "score_base": 59,
+    "minute_bonus": 13,
+    "shape": "震荡上行顶",
+    "shape_score": 8,
+    "vol10_ratio": 0.423,
+    "peak_dir": "向上",
+    "shape_note": "十点量比 0.42（缩量，好）；量峰向上（向上产物）",
+    "first_date": "2026-10-20",
+    "pull_days": 3,
+    "pull_vol_ratio": 0.96,
+    "support": "中",
+    "trigger": 121.25,
+    "dist_pct": 1.5,
+    "price": 119.48,
+    "mcap": 283.0,
+    "f_pct": 20.0,
+    "ma_bull": false,
+    "fanbao": false,
+    "ntype": "中阳",
+    "retr": -0.743,
+    "buy_mode": "above",
+    "buy_mode_txt": "已站上前高（第三笔已启动）：不追，等回踩六七八或突破后回抽",
+    "zone_high": 95.69,
+    "zone_low": 92.14,
+    "focus_price": 92.14,
+    "stop_loss": 86.1,
+    "target": 124.47,
+    "tol_pct": 1.5,
+    "pos60": 0.41,
+    "zt_gene": true,
+    "score_raw": 72,
+    "actionable": false
+   },
+   {
+    "code": "603305",
+    "name": "旭升集团",
+    "theme": "",
+    "score": 54,
+    "score_base": 54,
+    "minute_bonus": 15,
+    "shape": "震荡上行顶",
+    "shape_score": 8,
+    "vol10_ratio": 0.338,
+    "peak_dir": "向上",
+    "shape_note": "十点量比 0.34（极缩，好）；量峰向上（向上产物）",
+    "first_date": "2026-10-16",
+    "pull_days": 5,
+    "pull_vol_ratio": 0.78,
+    "support": "弱",
+    "trigger": 11.27,
+    "dist_pct": 0.3,
+    "price": 11.24,
+    "mcap": 129.9,
+    "f_pct": 10.0,
+    "ma_bull": false,
+    "fanbao": false,
+    "ntype": "中阳",
+    "retr": -0.364,
+    "buy_mode": "above",
+    "buy_mode_txt": "已站上前高（第三笔已启动）：不追，等回踩六七八或突破后回抽",
+    "zone_high": 10.29,
+    "zone_low": 10.09,
+    "focus_price": 10.09,
+    "stop_loss": 9.87,
+    "target": 11.2,
+    "tol_pct": 1.5,
+    "pos60": 0.46,
+    "zt_gene": true,
+    "score_raw": 69,
+    "actionable": false
+   }
+  ],
   "funnel": {
-   "近4日无涨停": 4879,
-   "调整跌破首板最低价（形态失效）": 9,
-   "首板未倍量（<前5日均量2倍）": 52,
-   "首板前一交易日也涨停（连板）": 36,
-   "调整期放量下跌": 3,
-   "首板非实体板（一字/T字）": 5,
-   "调整期未缩量（均量≥首板量）": 22,
-   "今日涨停（再启动已走完）": 8,
-   "今日放量（非缩量调整）": 1,
-   "流通市值不在 30~100 亿": 1,
-   "股价不在 3~20 元": 2
+   "近10日无涨停起涨": 4672,
+   "破位超出容忍（中阳 1.5%）": 25,
+   "首板未倍量（<前5日均量2倍）": 133,
+   "调整期出现>首板2倍的量（123量上限）": 20,
+   "首板非实体板（一字/T字）": 12,
+   "起涨前一交易日也涨停（连板N不做）": 67,
+   "调整期未缩量（均量≥首板量）": 40,
+   "调整期放量下跌": 8,
+   "破位超出容忍（长阳 0.0%）": 10,
+   "今日涨停（再启动已走完）": 13,
+   "破位超出容忍（短阳 2.0%）": 2,
+   "流通≥500亿（不做大市值）": 1
   },
-  "failed": []
+  "failed": [],
+  "env": {
+   "penalty": -15,
+   "notes": [
+    "跌停 6 家（≥5）：票再强也不买，除非超跌 [25]"
+   ],
+   "actionable": false
+  },
+  "exit_rules": [
+   {
+    "cond": "浮盈到 +5%",
+    "do": "视为保本线：跌回成本先卖保本（向上弃 N、向下可再买回）[36][44]"
+   },
+   {
+    "cond": "浮盈 +5~6%",
+    "do": "回测胜率最高（68.34%）：可减半或落袋，别等 8~10%（47.65%）[37]"
+   },
+   {
+    "cond": "浮盈 >5% 且出现冲高",
+    "do": "最多持有 3 个交易日（胜率 67.41%），有冲高就卖，实际常 1~2.5 天 [43]"
+   },
+   {
+    "cond": "次日高开 >1.5%",
+    "do": "不追；卖出优先在黄线（当日均价）上方，高开太多回落概率大 [40][48]"
+   },
+   {
+    "cond": "次日低开 ≤1.5%",
+    "do": "在黄线下方分笔买；站稳黄线且大盘向上再加仓 [47]"
+   },
+   {
+    "cond": "破位",
+    "do": "有预期且中军抗打可再等 2 个点（总亏上限约 4 点）；否则止损 [49]"
+   },
+   {
+    "cond": "N 后再涨停",
+    "do": "除非炸板 / 封单递减 / 连板到顶，否则不卖 [38]"
+   },
+   {
+    "cond": "出现禁止形态",
+    "do": "板后跌停、脚后跟（一笔砸下 7~8 点）、巨量出货板、尾盘下影线 → 直接走 [50][51][53]"
+   }
+  ],
+  "position_rule": {
+   "sizing": "等额仓位：每个 N 用同样金额，单票 ≤ 短线资金 1/4，一天最多 2 只 [58]",
+   "compound": "不用复利：短线只用固定本金里不在乎的小钱，利润转长线 [59]",
+   "add": "位置越高首笔越小；出启动信号加半仓，向上企稳再加完（前轻后重、前频后缓）[17]",
+   "t_trade": "做 T 只在有重叠点位时做，单次价差目标 ≥2.5 点 [17][49]"
+  }
  },
  "review": {
   "prev_date": "2026-10-22",
@@ -5686,6 +6197,13 @@
    {
     "code": "002249",
     "name": "大洋电机",
+    "industry": "电机Ⅱ",
+    "reason": "机器人关节+电机业务+数据中心风机+“羊”字辈",
+    "seal_fund": 207334189,
+    "float_cap": 13219367964.38,
+    "break_times": 0,
+    "first_seal": "09:36:00",
+    "last_seal": "09:36:00",
     "prev_score": 91,
     "prev_grade": "A",
     "pct": 7.37,
@@ -5698,14 +6216,38 @@
      "secondary": null,
      "evidence": [
       "电机Ⅱ 涨停 7 → 2 家",
-      "题材「“羊”字辈、数据中心风机」已退出当日主线"
+      "题材「“羊”字辈、数据中心风机」已退出当日主线",
+      "板块龙头 华阳智能（昨 1 板）今日晋级2板"
      ]
+    },
+    "sector": {
+     "industry": "电机Ⅱ",
+     "zt_prev": 7,
+     "zt_today": 2,
+     "delta": -5,
+     "theme_dropped": true
+    },
+    "leader": {
+     "code": "301502",
+     "name": "华阳智能",
+     "limit_days": 1,
+     "link": "题材「机器人关节」",
+     "today_status": "晋级2板",
+     "today_pct": 20.0,
+     "today_board": 2
     },
     "note": "91 分最高分只涨 7.37%、未触板：电机Ⅱ 涨停 7→2 家，昨日主线今天没人接。但个股本身没死，按 R-EXEC-07 这类「未封板但有溢价」应在 +7% 上方止盈，而不是等二板。"
    },
    {
     "code": "600698",
     "name": "湖南天雁",
+    "industry": "汽车零部",
+    "reason": "涡轮增压器+电子水泵+汽车零部件",
+    "seal_fund": 36586798,
+    "float_cap": 6303128714.19,
+    "break_times": 0,
+    "first_seal": "10:44:03",
+    "last_seal": "10:44:03",
     "prev_score": 82,
     "prev_grade": "A",
     "pct": -1.19,
@@ -5717,14 +6259,38 @@
      "primary": "板块",
      "secondary": null,
      "evidence": [
-      "题材「汽车零部件、涡轮增压器」已退出当日主线"
+      "题材「汽车零部件、涡轮增压器」已退出当日主线",
+      "板块龙头 襄阳轴承（昨 1 板）今日晋级2板"
      ]
+    },
+    "sector": {
+     "industry": "汽车零部",
+     "zt_prev": 3,
+     "zt_today": 6,
+     "delta": 3,
+     "theme_dropped": true
+    },
+    "leader": {
+     "code": "000678",
+     "name": "襄阳轴承",
+     "limit_days": 1,
+     "link": "行业 汽车零部",
+     "today_status": "晋级2板",
+     "today_pct": 9.98,
+     "today_board": 2
     },
     "note": "−1.19%：汽车零部 3→6 家（板块反而变强），它却掉队——它挂的是涡轮增压器，题材不在当日主线，属「板块强、题材掉队」，不是个股自身崩坏。"
    },
    {
     "code": "603350",
     "name": "安乃达",
+    "industry": "电机Ⅱ",
+    "reason": "具身智能+两轮电驱+系统集成",
+    "seal_fund": 54204315,
+    "float_cap": 1300790260.0,
+    "break_times": 1,
+    "first_seal": "09:34:46",
+    "last_seal": "09:35:16",
     "prev_score": 79,
     "prev_grade": "A",
     "pct": 3.12,
@@ -5737,14 +6303,38 @@
      "secondary": "板块",
      "evidence": [
       "昨日炸板 1 次",
-      "叠加 板块：电机Ⅱ 涨停 7 → 2 家"
+      "叠加 板块：电机Ⅱ 涨停 7 → 2 家",
+      "板块龙头 大洋电机（昨 1 板）今日未涨停"
      ]
+    },
+    "sector": {
+     "industry": "电机Ⅱ",
+     "zt_prev": 7,
+     "zt_today": 2,
+     "delta": -5,
+     "theme_dropped": false
+    },
+    "leader": {
+     "code": "002249",
+     "name": "大洋电机",
+     "limit_days": 1,
+     "link": "行业 电机Ⅱ",
+     "today_status": "未涨停",
+     "today_pct": 7.37,
+     "today_board": 0
     },
     "note": "＋3.12%：昨日炸 1 次 + 电机Ⅱ 退潮双重压制，属「个股封板瑕疵 + 板块退潮」叠加。"
    },
    {
     "code": "600261",
     "name": "阳光照明",
+    "industry": "照明设备",
+    "reason": "照明业务+LED+激光通信投资+氢能装备",
+    "seal_fund": 25221189,
+    "float_cap": 4806190677.6,
+    "break_times": 1,
+    "first_seal": "09:32:03",
+    "last_seal": "09:33:06",
     "prev_score": 69,
     "prev_grade": "B",
     "pct": -4.17,
@@ -5758,14 +6348,38 @@
      "evidence": [
       "照明设备 涨停 3 → 0 家",
       "题材「LED、氢能装备」已退出当日主线",
-      "叠加 个股：昨日炸板 1 次"
+      "叠加 个股：昨日炸板 1 次",
+      "板块龙头 海洋王（昨 5 板）今日晋级6板"
      ]
+    },
+    "sector": {
+     "industry": "照明设备",
+     "zt_prev": 3,
+     "zt_today": 0,
+     "delta": -3,
+     "theme_dropped": true
+    },
+    "leader": {
+     "code": "002724",
+     "name": "海洋王",
+     "limit_days": 5,
+     "link": "行业 照明设备",
+     "today_status": "晋级6板",
+     "today_pct": 9.99,
+     "today_board": 6
     },
     "note": "−4.17%：照明设备 3→0 家，昨日又炸过 1 次，板块直接消失，跌得最干脆。"
    },
    {
     "code": "603028",
     "name": "赛福天",
+    "industry": "通用设备",
+    "reason": "机器人腱绳+特种钢索",
+    "seal_fund": 41700377,
+    "float_cap": 2200465952.0,
+    "break_times": 0,
+    "first_seal": "09:32:16",
+    "last_seal": "09:32:16",
     "prev_score": 65,
     "prev_grade": "B",
     "pct": 10.05,
@@ -5780,6 +6394,22 @@
       "今日封住二板，收 +10.05%"
      ]
     },
+    "sector": {
+     "industry": "通用设备",
+     "zt_prev": 4,
+     "zt_today": 5,
+     "delta": 1,
+     "theme_dropped": true
+    },
+    "leader": {
+     "code": "603278",
+     "name": "大业股份",
+     "limit_days": 5,
+     "link": "行业 通用设备",
+     "today_status": "晋级6板",
+     "today_pct": 9.99,
+     "today_board": 6
+    },
     "note": "＋10.05% 一字二板，唯一晋级；但开盘一字、换手只有 1.76%，散户基本买不到——名义晋级率会高估可交易收益，这也是 10-22 那条「名义晋级 ≠ 可交易」教训的延续。"
    }
   ],
@@ -5791,6 +6421,108 @@
    "个股": 1,
    "晋级": 1
   },
+  "sector_leaders": [
+   {
+    "sector": "汽车零部",
+    "zt_prev": 3,
+    "zt_today": 6,
+    "leader": {
+     "code": "000678",
+     "name": "襄阳轴承",
+     "limit_days": 1,
+     "today_status": "晋级2板",
+     "today_pct": 9.98,
+     "today_board": 2
+    },
+    "candidates": [
+     {
+      "code": "600698",
+      "name": "湖南天雁",
+      "outcome": "failed",
+      "pct": -1.19
+     }
+    ],
+    "advanced": 0,
+    "total": 1
+   },
+   {
+    "sector": "通用设备",
+    "zt_prev": 4,
+    "zt_today": 5,
+    "leader": {
+     "code": "603278",
+     "name": "大业股份",
+     "limit_days": 5,
+     "today_status": "晋级6板",
+     "today_pct": 9.99,
+     "today_board": 6
+    },
+    "candidates": [
+     {
+      "code": "603028",
+      "name": "赛福天",
+      "outcome": "advanced",
+      "pct": 10.05
+     }
+    ],
+    "advanced": 1,
+    "total": 1
+   },
+   {
+    "sector": "电机Ⅱ",
+    "zt_prev": 7,
+    "zt_today": 2,
+    "leader": {
+     "code": "301502",
+     "name": "华阳智能",
+     "limit_days": 1,
+     "today_status": "晋级2板",
+     "today_pct": 20.0,
+     "today_board": 2
+    },
+    "candidates": [
+     {
+      "code": "002249",
+      "name": "大洋电机",
+      "outcome": "failed",
+      "pct": 7.37
+     },
+     {
+      "code": "603350",
+      "name": "安乃达",
+      "outcome": "failed",
+      "pct": 3.12
+     }
+    ],
+    "advanced": 0,
+    "total": 2
+   },
+   {
+    "sector": "照明设备",
+    "zt_prev": 3,
+    "zt_today": 0,
+    "leader": {
+     "code": "002724",
+     "name": "海洋王",
+     "limit_days": 5,
+     "today_status": "晋级6板",
+     "today_pct": 9.99,
+     "today_board": 6
+    },
+    "candidates": [
+     {
+      "code": "600261",
+      "name": "阳光照明",
+      "outcome": "failed",
+      "pct": -4.17
+     }
+    ],
+    "advanced": 0,
+    "total": 1
+   }
+  ],
+  "leader_advanced": 4,
+  "leader_total": 4,
   "environment": {
    "indices": [
     {
