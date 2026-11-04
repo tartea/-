@@ -12,6 +12,7 @@
 ├── <YYYY-MM-DD>/
 │   ├── report.json            唯一机器可读真源（schema v1.0）
 │   └── report.html            人读版（自包含，零外部依赖）
+├── analysis/                  归因分析（跨日统计，非每日产物）
 ├── 2026-10-21/                legacy 目录（详见口径说明 1）
 └── quantify/                  潮位（Quantify）MCP 历史归档，非本技能产物
 ```
@@ -68,3 +69,8 @@ python3 $SD/render.py  --date YYYY-MM-DD --root /Users/ali/Documents/stock   # �
   会错配到更早一天的名单——需先把更早的日期目录临时移开。
 - `update_index()` 会跳过「已有 report.json 但不在索引里」的目录，且会按 `result.json` 重算 legacy 行。
   手工导入某天的报告后，需单独调用 `build.update_index(root, report, review)` 补索引。
+
+## analysis/
+
+跨日归因分析文档。首篇：[2026-11-04-一进二失败率归因.md](analysis/2026-11-04-一进二失败率归因.md)——
+38 个回填样本的失败率拆解、规则体检与新增规则依据。
