@@ -1,7 +1,7 @@
 {
  "schema": "stock-daily.index",
  "schema_version": "1.0",
- "updated_at": "2026-11-04T22:56:33+08:00",
+ "updated_at": "2026-11-04T23:14:39+08:00",
  "days": [
   {
    "date": "2026-10-21",
@@ -401,9 +401,9 @@
    ],
    "external": {
     "tone": "中性",
-    "score": 0,
-    "us_avg": 0.27,
-    "a50_pct": 0.33,
+    "score": 1,
+    "us_avg": 2.11,
+    "a50_pct": 0.44,
     "week": {
      "tone": "偏空",
      "score": -2,
